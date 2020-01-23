@@ -5,7 +5,7 @@ const database = knex({
   connection: {
     host: "127.0.0.1", // Your local host IP
     user: "postgres", // Your postgres user name
-    password: "", // Your postgres user password
+    password: "cotix1", // Your postgres user password
     database: "cloud-p0" // Your database name
   }
 });

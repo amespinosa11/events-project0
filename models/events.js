@@ -5,7 +5,7 @@ module.exports = {
     getEvents: async(idUsuario) => {
         const events = await db('event').where({
             idUser: idUsuario
-          });
+          }).orderBy([{ column: 'fechaCreacion', order: 'desc' }])
         return events;
     },
 
@@ -30,13 +30,14 @@ module.exports = {
           direccion: event.direccion,
           fechaInicio: event.fechaInicio,
           fechaFin: event.fechaFin,
-          idCategory: event.idCategory
+          idCategory: event.idCategory,
+          presencial: event.presencial
         });
         return event2;
     },
 
     deleteEvent: async(id) => {
-        const event = await knex('event')
+        const event = await db('event')
         .where({id:id})
         .del();
         return event;

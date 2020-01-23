@@ -3,6 +3,7 @@
   <h1>Eventos</h1>
   <div class="row d-flex justify-content-end mx-5">
     <a class="btn btn-primary" href="/events/new">Crear</a>
+    <a class="btn btn-secondary mx-3" href="/logout">Logout</a>
   </div>
   <div class="row w-100">
     <% events.forEach(function(event){ %>
@@ -11,8 +12,8 @@
           <h5 class="card-title"><%= event.nombre %></h5>
           <h6 class="card-subtitle mb-2 text-muted">Fecha Creación: <%= event.fechaCreacion %></h6>
           <p class="card-text"><%= event.lugar %></p>
-          <a href="#" class="btn btn-danger mx-2">Eliminar</a>
-          <a href="/events/detail" class="btn btn-primary">Ver más</a>
+          <a href="/events/delete/<%= event.id %>" class="btn btn-danger mx-2">Eliminar</a>
+          <a href="/events/<%= event.id %>" class="btn btn-primary">Ver más</a>
         </div>
       </div>
     <% }); %>

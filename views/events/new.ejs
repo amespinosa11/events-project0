@@ -1,7 +1,7 @@
 <%- include ('../header') %>
 <div class="d-flex flex-column justify-content-center align-items-center w-100 h-100 mt-5 mb-2">
     <h3>Evento</h3>
-    <form class="mt-4 w-50">
+    <form class="mt-4 w-50" action="/events/new" method="post">
         <div class="form-group">
             <label>Nombre</label>
             <input type="text" class="form-control" placeholder="" name="nombre">
@@ -16,24 +16,26 @@
         </div>
         <div class="form-group">
             <label>Fecha Inicio</label>
-            <input type="text" class="form-control" placeholder="" name="fechaInicio">
+            <input type="date" min="<%= minDate %>" class="form-control" placeholder="" name="fechaInicio">
         </div>
         <div class="form-group">
             <label>Fecha Fin</label>
-            <input type="text" class="form-control" placeholder="" name="fechaFin">
+            <input type="date" min="<%= minDate %>" class="form-control" placeholder="" name="fechaFin">
         </div>
         <div class="form-group">
-            <label class="form-check-label">Presencial</label>
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" name="presencial">
+            <label class="radio-inline">
+                <input type="radio" name="presencial" checked>Presencial
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="presencial">Virtual
+            </label>
         </div>
         <div class="form-group">
             <label>Categoria</label>
             <select class="form-control" id="exampleFormControlSelect1" name="categoria">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+                <% categories.forEach(function(category){ %>
+                <option value="<%= category.id %>"><%= category.nombre %></option>
+                <% }); %>
             </select>
         </div>
         <button type="submit" class="btn btn-primary btn-block">Guardar</button>

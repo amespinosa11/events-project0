@@ -7,6 +7,11 @@ module.exports = {
             id: id
           });
         return category;
+    },
+
+    getCategories: async() => {
+        const categories = await db.select('id', 'nombre').from('category');
+        return categories;
     }
 
 }
