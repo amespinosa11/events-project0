@@ -18,6 +18,6 @@ app.use("/", indexRoutes);
 app.use("/events", eventsRoutes);
 
 
-app.listen(3000, function () {
+app.listen(3000, '127.0.0.1' , function () {
   console.log('Example app listening on port 3000!');
 });
