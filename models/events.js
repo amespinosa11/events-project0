@@ -4,7 +4,7 @@ module.exports = {
 
     getEvents: async(idUsuario) => {
         const events = await db('event').where({
-            idUser: idUsuario
+            iduser: idUsuario
           }).orderBy([{ column: 'fechaCreacion', order: 'desc' }])
         return events;
     },
@@ -28,9 +28,9 @@ module.exports = {
           nombre: event.nombre,
           lugar: event.lugar,
           direccion: event.direccion,
-          fechaInicio: event.fechaInicio,
-          fechaFin: event.fechaFin,
-          idCategory: event.idCategory,
+          fechainicio: event.fechainicio,
+          fechafin: event.fechafin,
+          idcategory: event.idcategory,
           presencial: event.presencial
         });
         return event2;

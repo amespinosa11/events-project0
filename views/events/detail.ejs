@@ -16,11 +16,11 @@
         </div>
         <div class="row">
             <label>Fecha Inicio</label>
-            <input type="date" min="<%= minDate %>" class="form-control" value="<%= event.fechaInicio %>" name="fechaInicio">
+            <input type="date" min="<%= minDate %>" class="form-control" value="<%= event.fechainicio %>" name="fechainicio">
         </div>
         <div class="row">
             <label>Fecha Fin</label>
-            <input type="date" min="<%= minDate %>" class="form-control" value="<%= event.fechaFin %>" name="fechaFin">
+            <input type="date" min="<%= minDate %>" class="form-control" value="<%= event.fechafin %>" name="fechafin">
         </div>
         <div class="row">
             <label>Fecha Creación</label>
@@ -38,7 +38,7 @@
             <label>Categoria</label>
             <select class="form-control" id="exampleFormControlSelect1" name="categoria">
                 <% categories.forEach(function(category){ %>
-                <option value="<%= category.id %>" <% if(category.id == event.idCategory ){ %> selected <% } %>><%= category.nombre %></option>
+                <option value="<%= category.id %>" <% if(category.id == event.idcategory ){ %> selected <% } %>><%= category.nombre %></option>
                 <% }); %>
             </select>
         </div>

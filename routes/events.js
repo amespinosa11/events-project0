@@ -31,8 +31,8 @@ router.post("/new", async(req,res) => {
     if(req.cookies.user) {
         const presencial = req.body.presencial === 1 ? true :  false;
         const newEvent = {nombre:req.body.nombre, lugar: req.body.lugar, direccion: req.body.direccion, 
-        fechaInicio: new Date(req.body.fechaInicio), fechaFin: new Date(req.body.fechaFin), presencial,
-        fechaCreacion: new Date(), idUser: req.cookies.user.id, idCategory: parseInt(req.body.categoria)};
+        fechainicio: new Date(req.body.fechainicio), fechafin: new Date(req.body.fechafin), presencial,
+        fechaCreacion: new Date(), iduser: req.cookies.user.id, idcategory: parseInt(req.body.categoria)};
         const createEvent = await eventsModel.createEvent(newEvent);
         if( createEvent.rowCount === 1 ) {
             res.redirect('/events');
@@ -50,8 +50,8 @@ router.get("/:id", async(req,res) => {
         event = event[0];
         const categories = await categoriesModel.getCategories(); 
     
-        event.fechaInicio = `${event.fechaInicio.getFullYear()}-${(event.fechaInicio.getMonth()+1) < 10 ? '0'+(event.fechaInicio.getMonth()+1) : (event.fechaInicio.getMonth()+1) }-${(event.fechaInicio.getDate()) < 10 ? '0'+(event.fechaInicio.getDate()) : event.fechaInicio.getDate()}`;
-        event.fechaFin = `${event.fechaFin.getFullYear()}-${(event.fechaFin.getMonth()+1) < 10 ? '0'+(event.fechaFin.getMonth()+1) : (event.fechaFin.getMonth()+1) }-${(event.fechaFin.getDate()) < 10 ? '0'+(event.fechaFin.getDate()) : event.fechaFin.getDate()}`;
+        event.fechainicio = `${event.fechainicio.getFullYear()}-${(event.fechainicio.getMonth()+1) < 10 ? '0'+(event.fechainicio.getMonth()+1) : (event.fechainicio.getMonth()+1) }-${(event.fechainicio.getDate()) < 10 ? '0'+(event.fechainicio.getDate()) : event.fechainicio.getDate()}`;
+        event.fechafin = `${event.fechafin.getFullYear()}-${(event.fechafin.getMonth()+1) < 10 ? '0'+(event.fechafin.getMonth()+1) : (event.fechafin.getMonth()+1) }-${(event.fechafin.getDate()) < 10 ? '0'+(event.fechafin.getDate()) : event.fechafin.getDate()}`;
         event.fechaCreacion = `${event.fechaCreacion.getFullYear()}-${(event.fechaCreacion.getMonth()+1) < 10 ? '0'+(event.fechaCreacion.getMonth()+1) : (event.fechaCreacion.getMonth()+1) }-${(event.fechaCreacion.getDate()) < 10 ? '0'+(event.fechaCreacion.getDate()) : event.fechaCreacion.getDate()}`;
     
         res.render("events/detail",{event:event, categories: categories, minDate: minDate});
@@ -64,8 +64,8 @@ router.post("/:id", async(req,res) => {
     if(req.cookies.user) {
         const presencial = req.body.presencial === 1 ? true :  false;
         const newEvent = {nombre:req.body.nombre, lugar: req.body.lugar, direccion: req.body.direccion, 
-        fechaInicio: new Date(req.body.fechaInicio), fechaFin: new Date(req.body.fechaFin), presencial, 
-        idUser: req.cookies.user.id, idCategory: parseInt(req.body.categoria), id: req.params.id};
+        fechainicio: new Date(req.body.fechainicio), fechafin: new Date(req.body.fechafin), presencial, 
+        iduser: req.cookies.user.id, idcategory: parseInt(req.body.categoria), id: req.params.id};
         const updateEvent = await eventsModel.editEvent(newEvent);
         if(updateEvent === 1) {
             res.redirect('/events');
