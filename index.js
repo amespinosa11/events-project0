@@ -18,6 +18,6 @@ app.use("/", indexRoutes);
 app.use("/events", eventsRoutes);
 
 
-app.listen(8080, '127.0.0.1' , function () {
+app.listen(8080, '0.0.0.0' , function () {
   console.log('Example app listening on port 8080!');
 });
