@@ -5,7 +5,7 @@ module.exports = {
     getEvents: async(idUsuario) => {
         const events = await db('event').where({
             iduser: idUsuario
-          }).orderBy([{ column: 'fechaCreacion', order: 'desc' }])
+          }).orderBy([{ column: 'fechacreacion', order: 'desc' }])
         return events;
     },
 
